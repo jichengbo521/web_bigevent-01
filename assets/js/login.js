@@ -64,14 +64,17 @@ $(function() {
             // 获取表单数据
             data: $(this).serialize(),
             success: function(res) {
+                console.log(res);
                 // 校验返回的状态
-                if (res.status !== 0) return layer.msg(res.message)
-                    // 提示信息 保存token 跳转页面
+                if (res.status !== 0) {
+                    return layer.msg(res.message)
+                }
+                // 提示信息 保存token 跳转页面
                 layer.msg('登陆成功')
                     // 保存token 未来的接口要是用token
                 localStorage.setItem('token', res.token)
                     // 跳转
-                location.href = '/code/index.html'
+                location.href = '/index.html'
             }
 
         })
